@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
 
 
-const socialColor = Colors.red;
+const socialColor = Colors.teal;

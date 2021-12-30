@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +14,7 @@ import 'package:udemy_flutter/modules/social_app/new_post/new_post_screen.dart';
 import 'package:udemy_flutter/modules/social_app/settings/settings_screen.dart';
 import 'package:udemy_flutter/modules/social_app/users/users_screen.dart';
 import 'package:udemy_flutter/shared/components/constants.dart';
+import 'package:udemy_flutter/shared/network/local/cashe_helper.dart';
 
 class SocialCubit extends Cubit<SocialStates>{
   SocialCubit() : super(SocialIntialState());
@@ -56,6 +56,20 @@ class SocialCubit extends Cubit<SocialStates>{
       emit(SocialChangeBtNavState());
     }
   }
+
+  bool isDark = false;
+  void changeAppMode({bool fromShared}) {
+    if (fromShared != null) {
+      isDark = fromShared;
+      emit(AppChangeThemeModeState());
+    } else {
+      isDark = !isDark;
+      CasheHelper.putBoolean(key: 'isDark', value: isDark).then((value) {
+        emit(AppChangeThemeModeState());
+      });
+    }
+  }
+
 
   SocialUserModel userModel;
   void getuserData()

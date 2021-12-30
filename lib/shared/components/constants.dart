@@ -1,6 +1,6 @@
-//https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=API_KEY
 
-//https://newsapi.org/v2/everything?q=tesla&apiKey=7db2b261d772400ba9ade18d100454fc
+
+import 'dart:io';
 
 import 'package:udemy_flutter/modules/social_app/social_login/social_login_screen.dart';
 import 'package:udemy_flutter/shared/components/components.dart';
@@ -8,7 +8,7 @@ import 'package:udemy_flutter/shared/network/local/cashe_helper.dart';
 
 void signOut(context)
 {
-   CasheHelper.removeData(key: 'token').then((value) 
+   CasheHelper.removeData(key: 'uId').then((value) 
             {
               if(value)
               {
@@ -18,14 +18,18 @@ void signOut(context)
             );
 }
 
-void printFullText(String text)
+String getOs()
 {
-  final pattern=RegExp('.{1,800}');
-  pattern.allMatches(text).forEach((match)=>print(match.group(0)));
+  return Platform.operatingSystem;  
 }
 
-
 String uId='';
+
+
+
+
+
+//Design Email Verification
 
 // ConditionalBuilder(
 //               condition: SocialCubit.get(context).model != null,

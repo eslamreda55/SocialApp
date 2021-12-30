@@ -63,7 +63,7 @@ class SocialSendMessagesErrorState extends SocialStates{}
 class SocialGetMessagesSuccessState extends SocialStates{}
 
 
-
+class AppChangeThemeModeState extends SocialStates{}
 
 class SocialChangeBtNavState extends SocialStates{}
 

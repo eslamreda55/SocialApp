@@ -11,7 +11,6 @@ import 'package:udemy_flutter/shared/bloc_observer.dart';
 import 'package:udemy_flutter/shared/components/components.dart';
 import 'package:udemy_flutter/shared/components/constants.dart';
 import 'package:udemy_flutter/shared/network/local/cashe_helper.dart';
-import 'package:udemy_flutter/shared/network/remote/dio_helper.dart';
 import 'package:udemy_flutter/shared/styles/themes.dart';
 
 
@@ -50,7 +49,6 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
   Bloc.observer = MyBlocObserver();
-  DioHelper.init();
   await CasheHelper.init();
 
   Widget widget;
